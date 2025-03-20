@@ -1,3 +1,4 @@
+#変動する電場と一定の磁場のもとで、相対論的な速度を持つ電気を帯びた粒子の運動を数値的に解くプログラム
 import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
@@ -7,11 +8,6 @@ def E_field(x,y):
     E0 = 0.15  # 基本の電場
     k = 1/600  # 空間変化の係数
     return -E0*np.sin(2*np.pi*k*x)  # 電場の式（正弦波）
-
-def f(t, y):
-    x, y_pos, vx, vy = y  # 位置と速度
-    E_dynamic = E_field(x, y_pos)  # 位置に応じた電場
-    return vx, vy, E_dynamic + vy * B, (-vx * B)
 
 def equation(t, y):
     x, y_pos, px, py = y  # 位置と運動量
