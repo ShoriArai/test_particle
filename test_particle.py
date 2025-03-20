@@ -1,4 +1,6 @@
-#変動する電場と一定の磁場のもとで、相対論的な速度を持つ電気を帯びた粒子の運動を数値的に解くプログラム
+#変動する電場と一定の磁場のもとで、
+#相対論的な速度を持つ電気を帯びた粒子の運動を数値的に解きつつ、
+#結果をグラフで出力するプログラム
 import numpy as np
 from scipy.integrate import solve_ivp
 import matplotlib.pyplot as plt
