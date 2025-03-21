@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 plt.rcParams["mathtext.fontset"] = "cm"
 
 def E_field(x,y):
-    E0 = 0.15  # 基本の電場
-    k = 1/600  # 空間変化の係数
     return -E0*np.sin(2*np.pi*k*x)  # 電場の式（正弦波）
 
 def equation(t, y):
@@ -28,6 +26,7 @@ def equation(t, y):
     return v_vec[0], v_vec[1], qbmc * (E_dynamic + v_vec[1]), -qbmc * (v_vec[0] + beta)
 
 #パラメータ
+delx = 1
 t0 = 600        #時間
 m = 1           #質量
 c = 1           #光速
@@ -37,7 +36,8 @@ beta = np.sqrt((gamma0**2-1))/gamma0
 v0 = -c*beta    #初速度
 sigma = 16.834  
 N1 = 100    #粒子数
-delx = 1
+E0 = 0.15  # 電場の振幅
+k = 1/600  # 空間変化の係数
 B  = np.sqrt(4*np.pi*m*gamma0*sigma*N1/delx) * c    #磁場
 time = np.linspace(0,t0,6000)   #時間
 gname = "test_particle.png" #保存する画像の名前
