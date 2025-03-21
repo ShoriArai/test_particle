@@ -31,6 +31,9 @@ gamma0 = 40     #ローレンツ因子
 E0 = 0.15  # 電場の振幅
 k = 1/600  # 空間変化の係数
 sigma = 16.834
+gname = "test_particle.png" #保存する画像の名前
+gformat = "png"             #ファイル形式
+gdpi = 300                  #画像のdpi
 
 #基本的に固定のパラメータ
 delx = 1
@@ -42,9 +45,6 @@ v0 = -c*beta    #初速度
 N1 = 100    #粒子数
 B  = np.sqrt(4*np.pi*m*gamma0*sigma*N1/delx) * c    #磁場
 time = np.linspace(0,t0,6000)   #時間
-gname = "test_particle.png" #保存する画像の名前
-gformat = "png"             #ファイル形式
-gdpi = 300                  #画像のdpi
 
 #数値計算、グラフ作成
 result = solve_ivp(equation,(time[0],time[-1]),(600.0,0.0,v0,0.0),t_eval=time)
