@@ -25,25 +25,26 @@ def equation(t, y):
     
     return v_vec[0], v_vec[1], qbmc * (E_dynamic + v_vec[1]), -qbmc * (v_vec[0] + beta)
 
-#パラメータ
-delx = 1
+#よく変更するパラメータ
 t0 = 600        #時間
+gamma0 = 40     #ローレンツ因子
+E0 = 0.15  # 電場の振幅
+k = 1/600  # 空間変化の係数
+sigma = 16.834
+
+#基本的に固定のパラメータ
+delx = 1
 m = 1           #質量
 c = 1           #光速
 q = -0.00446    #電荷
-gamma0 = 40     #ローレンツ因子
 beta = np.sqrt((gamma0**2-1))/gamma0
 v0 = -c*beta    #初速度
-sigma = 16.834  
 N1 = 100    #粒子数
-E0 = 0.15  # 電場の振幅
-k = 1/600  # 空間変化の係数
 B  = np.sqrt(4*np.pi*m*gamma0*sigma*N1/delx) * c    #磁場
 time = np.linspace(0,t0,6000)   #時間
 gname = "test_particle.png" #保存する画像の名前
 gformat = "png"             #ファイル形式
 gdpi = 300                  #画像のdpi
-
 
 #数値計算、グラフ作成
 result = solve_ivp(equation,(time[0],time[-1]),(600.0,0.0,v0,0.0),t_eval=time)
